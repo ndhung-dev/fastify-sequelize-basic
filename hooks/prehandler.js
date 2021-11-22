@@ -1,10 +1,10 @@
-const { getToken } = require('../repos/token.repo')
+const { getToken, getTokenWithUser } = require('../repos/token.repo')
 const { ts } = require('../helpers/string')
 const { NO_TOKEN, INVALID_TOKEN } = require('../configs/constant').ERRORS
 
 exports.verifyToken = async (req, res) => {
   const reqToken = req.headers.token
-  if (process.env.NODE_ENV === 'localhost') return true
+  if (process.env.NODE_ENV === 'localhost' && false) return true
 
   if (!reqToken) {
     res.code(401).send({
